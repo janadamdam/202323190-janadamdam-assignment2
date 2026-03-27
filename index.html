@@ -6,8 +6,19 @@
     <title>Jana Damdam | Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
+    <div id="welcomeOverlay" class="welcome-overlay">
+        <div class="welcome-box">
+            <h2>Welcome</h2>
+            <p>Enter your name to personalize your experience</p>
+
+            <label for="visitorName">Name:</label><br>
+            <input type="text" id="visitorName" name="visitorName"><br><br>
+
+            <button type="button" id="greetBtn">Enter Site</button>
+            <p id="overlayError"></p>
+        </div>
+    </div>
 
     <header>
         <nav>
@@ -20,60 +31,103 @@
         </nav>
     </header>
 
-    <section>
+    <section class="hero">
+        <h1>Jana Damdam</h1>
         <h3 id="greeting">Hello!</h3>
+        <p>
+            I am a Computer Science student passionate about learning web technologies and creating practical projects.
+            I like designing clean interfaces and improving my problem-solving skills through hands-on work.
+            Outside of tech, I am an artist exploring different kinds of art and a beginner sewist who enjoys working with clothing and design.
+        </p>
     </section>
 
     <section id="about">
         <h2>About Me</h2>
         <p>
-            <p>
-            I am a Computer Science student passionate about learning web technologies and creating practical projects.
-            I like designing clean interfaces and improving my problem-solving skills through hands-on work.
-            Outside of tech, I am a beginner sewist who enjoys working with clothing and design.
-            </p>
-
+            I enjoy building projects that combine practicality and creativity.
+            My interests include portfolio development, sewing-related digital tools, and creative hobbies such as painting.
         </p>
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
 
-        <div>
-            <h3>Digital Closet (In Progress)</h3>
-            <img src="assets/images/digital-closet-concept.png" width="200">
-            <p>
-                A web application to organize your wardrobe digitally and plan outfits digitally. Currently in development.
-            </p>
+        <div class="mode-buttons">
+            <button type="button" class="mode-btn active" data-mode="all">All</button>
+            <button type="button" class="mode-btn" data-mode="professional">Professional</button>
+            <button type="button" class="mode-btn" data-mode="creative">Creative</button>
         </div>
 
-        <div>
-            <h3>Sewing Studio (Concept)</h3>
-            <img src="assets/images/sewing-studio-concept.png" width="200">
-            <p>
-                A web application to organize sewing patterns and fabrics digitally. Concept stage, not yet developed.
-            </p>
+        <p id="modeDescription">
+            Viewing all projects from both my professional and creative interests.
+        </p>
+
+        <p id="emptyMessage"></p>
+
+        <div class="projects-container">
+            <div class="project-card professional">
+                <h3>Midterm &amp; Majors Scheduling System</h3>
+                <img src="assets/images/university-project.png" alt="Preview of Midterm and Majors Scheduling System" width="220">
+                <p>
+                    A university project focused on managing midterm and major exam scheduling.
+                    It aims to organize exam periods efficiently, reduce conflicts, and improve coordination between courses and scheduling committee.
+                </p>
+                <button type="button" class="favorite-btn">♡ Favorite</button>
+            </div>
+
+            <div class="project-card professional">
+                <h3>Digital Closet (In Progress)</h3>
+                <img src="assets/images/digital-closet-concept.png" alt="Preview of Digital Closet project" width="220">
+                <p>
+                    A personal web app inspired by my journey as a beginner sewist.
+                    I’m building it to organize my clothes digitally and explore outfit combinations while improving my skills.
+                </p>
+                <button type="button" class="favorite-btn">♡ Favorite</button>
+            </div>
+
+            <div class="project-card professional creative">
+                <h3>Sewing Office (Concept)</h3>
+                <img src="assets/images/sewing-organizer-concept.png" alt="Preview of Sewing Office project" width="220">
+                <p>
+                    A concept for a web application inspired by my interest in sewing.
+                    The goal is to organize sewing patterns, manage fabric collections, and store personal measurements in one place.
+                </p>
+                <button type="button" class="favorite-btn">♡ Favorite</button>
+            </div>
+
+            <div class="project-card creative">
+                <h3>Art Gallery (Concept)</h3>
+                <img src="assets/images/gallery-project.png" alt="Preview of Art Gallery project" width="220">
+                <p>
+                    A creative concept for organizing painting ideas, finished pieces, and inspiration in one digital space.
+                    It reflects my interest in combining creativity with simple digital organization.
+                </p>
+                <button type="button" class="favorite-btn">♡ Favorite</button>
+            </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
 
-        <form>
-            <label>Name:</label><br>
-            <input type="text"><br><br>
+        <form id="contactForm" novalidate>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <small id="nameError" class="error-message"></small><br>
 
-            <label>Email:</label><br>
-            <input type="email"><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <small id="emailError" class="error-message"></small><br>
 
-            <label>Message:</label><br>
-            <textarea rows="4"></textarea><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="5"></textarea><br>
+            <small id="messageError" class="error-message"></small><br>
 
             <button type="submit">Send</button>
+            <p id="formMessage"></p>
         </form>
     </section>
 
     <script src="js/script.js"></script>
-
 </body>
 </html>
