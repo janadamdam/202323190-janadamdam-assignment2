@@ -7,6 +7,10 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    scroll-padding-top: 90px;
+}
+
 header {
     background-color: #720E2D;
     padding: 15px;

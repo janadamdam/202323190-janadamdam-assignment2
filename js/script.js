@@ -6,11 +6,11 @@ const greeting = document.getElementById("greeting");
 const hour = new Date().getHours();
 
 if (hour < 12) {
-    greeting.textContent = "Good Morning!";
+    greeting.textContent = "Good Morning ";
 } else if (hour < 18) {
-    greeting.textContent = "Good Afternoon!";
+    greeting.textContent = "Good Afternoon ";
 } else {
-    greeting.textContent = "Good Evening!";
+    greeting.textContent = "Good Evening ";
 }
 
 const overlay = document.getElementById("welcomeOverlay");
@@ -27,7 +27,7 @@ if (greetBtn && overlay && visitorNameInput && overlayError && greeting) {
             return;
         }
 
-        greeting.textContent = "Welcome, " + visitorName + "!";
+        greeting.textContent = greeting.textContent + visitorName + "!";
         overlay.classList.add("hidden");
 
         window.scrollTo({
@@ -37,56 +37,83 @@ if (greetBtn && overlay && visitorNameInput && overlayError && greeting) {
     });
 }
 
-const modeButtons = document.querySelectorAll(".mode-btn");
+const modeSwitchBtn = document.getElementById("modeSwitchBtn");
 const projectCards = document.querySelectorAll(".project-card");
 const modeDescription = document.getElementById("modeDescription");
 const emptyMessage = document.getElementById("emptyMessage");
 
+const modes = ["💻+🎨", "💻", "🎨"];
+let currentModeIndex = 0;
 
-if (modeButtons.length > 0 && projectCards.length > 0 && modeDescription && emptyMessage) {
-    modeButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            const selectedMode = button.dataset.mode;
-            let visibleCount = 0;
+function updateModeVisuals(selectedMode) {
+    const mixedCard = document.querySelector(".project-card.professional.creative");
 
-            document.body.classList.remove("mode-all", "mode-professional", "mode-creative");
-            document.body.classList.add("mode-" + selectedMode);
+    if (!mixedCard) return;
 
-            modeButtons.forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
+    const professionalView = mixedCard.querySelector(".professional-view");
+    const creativeView = mixedCard.querySelector(".creative-view");
 
-            updateModeVisuals("all");
+    if (!professionalView || !creativeView) return;
 
-            projectCards.forEach(card => {
-                if (
-                    selectedMode === "all" ||
-                    card.classList.contains(selectedMode)
-                ) {
-                    card.style.display = "block";
-                    visibleCount++;
-                } else {
-                    card.style.display = "none";
-                }
-            });
+    if (selectedMode === "professional") {
+        professionalView.style.display = "block";
+        creativeView.style.display = "none";
+    } else if (selectedMode === "creative") {
+        professionalView.style.display = "none";
+        creativeView.style.display = "block";
+    } else {
+        professionalView.style.display = "block";
+        creativeView.style.display = "block";
+    }
+}
 
-            if (selectedMode === "all") {
-                modeDescription.textContent = "Viewing all projects from both my professional and creative interests.";
-            } else if (selectedMode === "professional") {
-                modeDescription.textContent = "Viewing projects that reflect my academic and professional interests.";
-            } else if (selectedMode === "creative") {
-                modeDescription.textContent = "Viewing projects that reflect my creative interests and hobbies.";
-            }
+function applyMode(selectedMode) {
+    let visibleCount = 0;
 
-            if (visibleCount === 0) {
-                emptyMessage.textContent = "No projects found in this view.";
-            } else {
-                emptyMessage.textContent = "";
-            }
-            updateModeVisuals(selectedMode);
-            revealCreativeShots();
-            zoomLaptopFrames();
-        });
+    document.body.classList.remove("mode-all", "mode-professional", "mode-creative");
+    document.body.classList.add("mode-" + selectedMode);
+
+    projectCards.forEach(card => {
+        if (
+            selectedMode === "all" ||
+            card.classList.contains(selectedMode)
+        ) {
+            card.style.display = "block";
+            visibleCount++;
+        } else {
+            card.style.display = "none";
+        }
     });
+
+    if (selectedMode === "all") {
+        modeDescription.textContent = "Here you can view all projects from both my professional and creative interests.";
+        modeSwitchBtn.textContent = "Mode: All";
+    } else if (selectedMode === "professional") {
+        modeDescription.textContent = "Here you can view projects that reflect my academic and professional interests.";
+        modeSwitchBtn.textContent = "Mode: Professional";
+    } else if (selectedMode === "creative") {
+        modeDescription.textContent = "Here you can view projects that reflect my creative interests and hobbies.";
+        modeSwitchBtn.textContent = "Mode: Creative";
+    }
+
+    if (visibleCount === 0) {
+        emptyMessage.textContent = "No projects found in this view.";
+    } else {
+        emptyMessage.textContent = "";
+    }
+
+    updateModeVisuals(selectedMode);
+    revealCreativeShots();
+    zoomLaptopFrames();
+}
+
+if (modeSwitchBtn && projectCards.length > 0 && modeDescription && emptyMessage) {
+    modeSwitchBtn.addEventListener("click", function () {
+        currentModeIndex = (currentModeIndex + 1) % modes.length;
+        applyMode(modes[currentModeIndex]);
+    });
+
+    applyMode("all");
 }
 
 const favoriteButtons = document.querySelectorAll(".favorite-btn");
