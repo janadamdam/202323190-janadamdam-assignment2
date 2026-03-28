@@ -169,3 +169,16 @@ textarea {
         padding: 0 12px;
     }
 }
+
+.project-card.favorited {
+    border: 2px solid #d36b8c;
+    box-shadow: 0 12px 24px rgba(211, 107, 140, 0.25);
+}
+
+.favorite-btn {
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.05);
+}

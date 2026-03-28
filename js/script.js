@@ -24,7 +24,10 @@ greetBtn.addEventListener("click", function () {
 
     greeting.textContent = "Welcome, " + visitorName + "!";
     overlay.classList.add("hidden");
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
 });
 
 const modeButtons = document.querySelectorAll(".mode-btn");
@@ -65,6 +68,30 @@ modeButtons.forEach(button => {
             emptyMessage.textContent = "No projects found in this view.";
         } else {
             emptyMessage.textContent = "";
+        }
+    });
+});
+
+const favoriteButtons = document.querySelectorAll(".favorite-btn");
+
+favoriteButtons.forEach((button, index) => {
+    const projectCard = button.closest(".project-card");
+    const storageKey = "favoriteProject" + index;
+
+    if (localStorage.getItem(storageKey) === "true") {
+        projectCard.classList.add("favorited");
+        button.textContent = "♥ Favorited";
+    }
+
+    button.addEventListener("click", function () {
+        const isFavorited = projectCard.classList.toggle("favorited");
+
+        if (isFavorited) {
+            button.textContent = "♥ Favorited";
+            localStorage.setItem(storageKey, "true");
+        } else {
+            button.textContent = "♡ Favorite";
+            localStorage.setItem(storageKey, "false");
         }
     });
 });
