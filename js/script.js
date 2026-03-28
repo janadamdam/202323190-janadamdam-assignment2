@@ -23,7 +23,8 @@ greetBtn.addEventListener("click", function () {
     }
 
     greeting.textContent = "Welcome, " + visitorName + "!";
-    overlay.style.display = "none";
+    overlay.classList.add("hidden");
+    window.scrollTo(0, 0);
 });
 
 const modeButtons = document.querySelectorAll(".mode-btn");
@@ -48,7 +49,7 @@ modeButtons.forEach(button => {
                 card.style.display = "block";
                 visibleCount++;
             } else {
-                card.style.display = "none";
+                overlay.classList.add("hidden");
             }
         });
 
