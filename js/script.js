@@ -1,6 +1,13 @@
-window.onload = function () {
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+
+window.addEventListener("load", function () {
     window.scrollTo(0, 0);
-};
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 0);
+});
 
 const greeting = document.getElementById("greeting");
 const hour = new Date().getHours();
@@ -30,10 +37,7 @@ if (greetBtn && overlay && visitorNameInput && overlayError && greeting) {
         greeting.textContent = greeting.textContent + visitorName + "!";
         overlay.classList.add("hidden");
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        window.scrollTo(0,0);
     });
 }
 
@@ -42,7 +46,7 @@ const projectCards = document.querySelectorAll(".project-card");
 const modeDescription = document.getElementById("modeDescription");
 const emptyMessage = document.getElementById("emptyMessage");
 
-const modes = ["💻+🎨", "💻", "🎨"];
+const modes = ["all", "professional", "creative"];
 let currentModeIndex = 0;
 
 function updateModeVisuals(selectedMode) {
@@ -87,13 +91,13 @@ function applyMode(selectedMode) {
 
     if (selectedMode === "all") {
         modeDescription.textContent = "Here you can view all projects from both my professional and creative interests.";
-        modeSwitchBtn.textContent = "Mode: All";
+        modeSwitchBtn.textContent = "💻+🎨";
     } else if (selectedMode === "professional") {
         modeDescription.textContent = "Here you can view projects that reflect my academic and professional interests.";
-        modeSwitchBtn.textContent = "Mode: Professional";
+        modeSwitchBtn.textContent = "💻";
     } else if (selectedMode === "creative") {
         modeDescription.textContent = "Here you can view projects that reflect my creative interests and hobbies.";
-        modeSwitchBtn.textContent = "Mode: Creative";
+        modeSwitchBtn.textContent = "🎨";
     }
 
     if (visibleCount === 0) {

@@ -1,7 +1,12 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0 20px;
+    padding: 0;
     background-color: #fff0f5;
     color: #333;
     overflow-x: hidden;
@@ -68,21 +73,6 @@ button:hover {
     padding: 60px 24px;
 }
 
-.top-mode-buttons {
-    justify-content: center;
-    margin-top: 28px;
-}
-
-.mode-buttons {
-    margin: 20px 0;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.mode-btn.active {
-    background-color: #d36b8c;
-}
 
 .projects-container {
     display: grid;
@@ -148,10 +138,14 @@ textarea {
 
 .welcome-overlay {
     position: fixed;
-    background: rgba(40, 10, 20, 0.45);
+    top: 0;
+    left: 0;
+    width: 100vw;   
+    height: 100vh;  
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgba(40, 10, 20, 0.45);
     z-index: 1000;
 }
 
