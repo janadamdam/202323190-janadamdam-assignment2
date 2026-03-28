@@ -1,3 +1,7 @@
+window.onload = function () {
+    window.scrollTo(0, 0);
+};
+
 const greeting = document.getElementById("greeting");
 const hour = new Date().getHours();
 
@@ -14,63 +18,68 @@ const greetBtn = document.getElementById("greetBtn");
 const visitorNameInput = document.getElementById("visitorName");
 const overlayError = document.getElementById("overlayError");
 
-greetBtn.addEventListener("click", function () {
-    const visitorName = visitorNameInput.value.trim();
+if (greetBtn && overlay && visitorNameInput && overlayError && greeting) {
+    greetBtn.addEventListener("click", function () {
+        const visitorName = visitorNameInput.value.trim();
 
-    if (visitorName === "") {
-        overlayError.textContent = "Please enter your name before continuing.";
-        return;
-    }
+        if (visitorName === "") {
+            overlayError.textContent = "Please enter your name before continuing.";
+            return;
+        }
 
-    greeting.textContent = "Welcome, " + visitorName + "!";
-    overlay.classList.add("hidden");
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    })
-});
+        greeting.textContent = "Welcome, " + visitorName + "!";
+        overlay.classList.add("hidden");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
 
 const modeButtons = document.querySelectorAll(".mode-btn");
 const projectCards = document.querySelectorAll(".project-card");
 const modeDescription = document.getElementById("modeDescription");
 const emptyMessage = document.getElementById("emptyMessage");
 
-modeButtons.forEach(button => {
-    button.addEventListener("click", function () {
-        const selectedMode = button.dataset.mode;
 
-        modeButtons.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
+if (modeButtons.length > 0 && projectCards.length > 0 && modeDescription && emptyMessage) {
+    modeButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const selectedMode = button.dataset.mode;
+            let visibleCount = 0;
 
-        let visibleCount = 0;
+            modeButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
 
-        projectCards.forEach(card => {
-            if (
-                selectedMode === "all" ||
-                card.classList.contains(selectedMode)
-            ) {
-                card.style.display = "block";
-                visibleCount++;
+            projectCards.forEach(card => {
+                if (
+                    selectedMode === "all" ||
+                    card.classList.contains(selectedMode)
+                ) {
+                    card.style.display = "block";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            if (selectedMode === "all") {
+                modeDescription.textContent = "Viewing all projects from both my professional and creative interests.";
+            } else if (selectedMode === "professional") {
+                modeDescription.textContent = "Viewing projects that reflect my academic and professional interests.";
+            } else if (selectedMode === "creative") {
+                modeDescription.textContent = "Viewing projects that reflect my creative interests and hobbies.";
+            }
+
+            if (visibleCount === 0) {
+                emptyMessage.textContent = "No projects found in this view.";
             } else {
-                overlay.classList.add("hidden");
+                emptyMessage.textContent = "";
             }
         });
-
-        if (selectedMode === "all") {
-            modeDescription.textContent = "Viewing all projects from both my professional and creative interests.";
-        } else if (selectedMode === "professional") {
-            modeDescription.textContent = "Viewing projects that reflect my academic and professional interests.";
-        } else if (selectedMode === "creative") {
-            modeDescription.textContent = "Viewing projects that reflect my creative interests and hobbies.";
-        }
-
-        if (visibleCount === 0) {
-            emptyMessage.textContent = "No projects found in this view.";
-        } else {
-            emptyMessage.textContent = "";
-        }
     });
-});
+}
 
 const favoriteButtons = document.querySelectorAll(".favorite-btn");
 
