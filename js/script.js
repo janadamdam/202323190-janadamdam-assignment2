@@ -49,6 +49,9 @@ if (modeButtons.length > 0 && projectCards.length > 0 && modeDescription && empt
             const selectedMode = button.dataset.mode;
             let visibleCount = 0;
 
+            document.body.classList.remove("mode-all", "mode-professional", "mode-creative");
+            document.body.classList.add("mode-" + selectedMode);
+
             modeButtons.forEach(btn => btn.classList.remove("active"));
             button.classList.add("active");
 
@@ -236,4 +239,5 @@ window.addEventListener("scroll", function () {
 handleScrollReveal();
 revealCreativeShots();
 zoomLaptopFrames();
+document.body.classList.add("mode-all");
 

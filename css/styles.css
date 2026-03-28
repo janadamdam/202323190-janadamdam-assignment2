@@ -122,7 +122,7 @@ textarea {
     padding: 10px;
     margin-top: 6px;
     margin-bottom: 8px;
-    border: 1px solid #d8a7b8;
+    border: 1px solid #f31a1a8f;
     border-radius: 10px;
     box-sizing: border-box;
 }
@@ -144,7 +144,6 @@ textarea {
 
 .welcome-overlay {
     position: fixed;
-    inset: 0;
     background: rgba(40, 10, 20, 0.45);
     display: flex;
     justify-content: center;
@@ -298,6 +297,77 @@ textarea {
 .professional-view,
 .creative-view {
     display: block;
+}
+
+.mode-professional body,
+body.mode-professional {
+    background-color: #f9f9f7d3;
+}
+
+body.mode-professional header {
+    background-color: #093655;
+}
+
+body.mode-professional section {
+    background: #ffffff;
+}
+
+body.mode-professional button {
+    background-color: #2f5d8c;
+    color: white;
+}
+
+body.mode-professional button:hover {
+    background-color: #3c74aa;
+}
+
+body.mode-professional .project-card {
+    box-shadow: 0 8px 20px rgba(30, 58, 95, 0.12);
+}
+
+body.mode-professional .laptop-screen {
+    background: #1c1c1c;
+}
+
+body.mode-creative {
+    background: linear-gradient(to bottom, #dff5c1, #f4f1af );
+}
+
+body.mode-creative header {
+    background-color: #720E2D;
+}
+
+body.mode-creative .project-card{
+    background: #f8ebff;
+}
+
+body.mode-creative section {
+    background: #fff0f5;
+}
+
+body.mode-creative button {
+    background-color: #4BA0A5;
+    color: #333;
+}
+
+body.mode-creative button:hover {
+    background-color: #3A8A90;
+}
+
+body.mode-creative .project-card {
+    box-shadow: 0 10px 24px rgba(255, 179, 79, 0.249);
+}
+
+body.mode-creative .creative-shot {
+    box-shadow: 0 12px 28px rgba(255, 237, 79, 0.2);
+}
+
+body.mode-creative .creative-shot {
+    transform: scale(1.05);
+}
+
+body.mode-all {
+    background-color: #fff0f5;
 }
 
 @media (max-width: 700px) {
