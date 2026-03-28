@@ -10,7 +10,7 @@
     <div id="welcomeOverlay" class="welcome-overlay">
         <div class="welcome-box">
             <h2>Welcome</h2>
-            <p>Enter your name to personalize your experience</p>
+            <p>Hi! What's your name?</p>
 
             <label for="visitorName">Name:</label><br>
             <input type="text" id="visitorName" name="visitorName"><br><br>
@@ -31,7 +31,7 @@
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero reveal">
         <h1>Jana Damdam</h1>
         <h3 id="greeting">Hello!</h3>
         <p>
@@ -39,20 +39,8 @@
             I like designing clean interfaces and improving my problem-solving skills through hands-on work.
             Outside of tech, I am an artist exploring different kinds of art and a beginner sewist who enjoys working with clothing and design.
         </p>
-    </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I enjoy building projects that combine practicality and creativity.
-            My interests include portfolio development, sewing-related digital tools, and creative hobbies such as painting.
-        </p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-
-        <div class="mode-buttons">
+        <div class="mode-buttons top-mode-buttons">
             <button type="button" class="mode-btn active" data-mode="all">All</button>
             <button type="button" class="mode-btn" data-mode="professional">Professional</button>
             <button type="button" class="mode-btn" data-mode="creative">Creative</button>
@@ -61,53 +49,104 @@
         <p id="modeDescription">
             Viewing all projects from both my professional and creative interests.
         </p>
+    </section>
+
+    <section id="about" class = "reveal">
+        <h2>About Me</h2>
+        <p>
+            I enjoy building projects that combine practicality and creativity.
+            My interests include portfolio development, sewing-related digital tools, and creative hobbies such as painting.
+        </p>
+    </section>
+
+    <section id="projects" class = "reveal">
+        <h2>Projects</h2>
 
         <p id="emptyMessage"></p>
 
         <div class="projects-container">
-            <div class="project-card professional">
-                <h3>Midterm &amp; Majors Scheduling System</h3>
-                <img src="assets/images/university-project.png" alt="Preview of Midterm and Majors Scheduling System" width="220">
-                <p>
-                    A university project focused on managing midterm and major exam scheduling.
-                    It aims to organize exam periods efficiently, reduce conflicts, and improve coordination between courses and scheduling committee.
-                </p>
-                <button type="button" class="favorite-btn">♡ Favorite</button>
-            </div>
+            <article class="project-card professional reveal-card">
+                <div class="laptop-frame zoom-card">
+                    <div class="laptop-screen">
+                        <img src="assets/images/scheduling-system.png" alt="Midterm and Majors Scheduling System preview">
+                    </div>
+                    <div class="laptop-base"></div>
+                </div>
 
-            <div class="project-card professional">
-                <h3>Digital Closet (In Progress)</h3>
-                <img src="assets/images/digital-closet-concept.png" alt="Preview of Digital Closet project" width="220">
-                <p>
-                    A personal web app inspired by my journey as a beginner sewist.
-                    I’m building it to organize my clothes digitally and explore outfit combinations while improving my skills.
-                </p>
-                <button type="button" class="favorite-btn">♡ Favorite</button>
-            </div>
+                <div class="project-text">
+                    <h3>Midterm &amp; Majors Scheduling System</h3>
+                    <p>
+                        A university project focused on managing midterm and major exam scheduling.
+                        It aims to organize exam periods efficiently, reduce conflicts, and improve coordination between courses and students.
+                    </p>
+                    <button type="button" class="favorite-btn">🤍</button>
+                </div>
+            </article>
 
-            <div class="project-card professional creative">
-                <h3>Sewing Office (Concept)</h3>
-                <img src="assets/images/sewing-organizer-concept.png" alt="Preview of Sewing Office project" width="220">
-                <p>
-                    A concept for a web application inspired by my interest in sewing.
-                    The goal is to organize sewing patterns, manage fabric collections, and store personal measurements in one place.
-                </p>
-                <button type="button" class="favorite-btn">♡ Favorite</button>
-            </div>
+            <article class="project-card professional reveal-card">
+                <div class="laptop-frame zoom-card">
+                    <div class="laptop-screen">
+                        <img src="assets/images/digital-closet-mockup.png" alt="Digital Closet mockup">
+                    </div>
+                    <div class="laptop-base"></div>
+                </div>
 
-            <div class="project-card creative">
-                <h3>Art Gallery (Concept)</h3>
-                <img src="assets/images/gallery-project.png" alt="Preview of Art Gallery project" width="220">
-                <p>
-                    A creative concept for organizing painting ideas, finished pieces, and inspiration in one digital space.
-                    It reflects my interest in combining creativity with simple digital organization.
-                </p>
-                <button type="button" class="favorite-btn">♡ Favorite</button>
-            </div>
+                <div class="project-text">
+                    <h3>Digital Closet (In Progress)</h3>
+                    <p>
+                        A personal web app inspired by my journey as a beginner sewist.
+                        I’m building it to organize my clothes digitally and explore outfit combinations while improving my skills.
+                    </p>
+                    <button type="button" class="favorite-btn">🤍</button>
+                </div>
+            </article>
+
+            <article class="project-card professional creative reveal-card">
+                <div class="laptop-frame zoom-card professional-view">
+                    <div class="laptop-screen">
+                        <img src="assets/images/sewing-office-mockup.png" alt="Sewing Office mockup">
+                    </div>
+                    <div class="laptop-base"></div>
+                </div>
+
+                <div class="creative-collage creative-view">
+                    <img src="assets/images/sewing-work-1.png" alt="Sewing work 1" class="creative-shot shot-1">
+                    <img src="assets/images/sewing-work-2.png" alt="Sewing work 2" class="creative-shot shot-2">
+                    <img src="assets/images/sewing-work-3.png" alt="Sewing work 3" class="creative-shot shot-3">
+                    <img src="assets/images/sewing-work-4.png" alt="Sewing work 4" class="creative-shot shot-4">
+                </div>
+
+                <div class="project-text">
+                    <h3>Sewing Office</h3>
+                    <p>
+                        A concept that connects my interest in sewing with digital organization.
+                        In the professional view, it appears as a product mockup. In the creative view, it reflects actual sewing-related work and inspiration.
+                    </p>
+                    <button type="button" class="favorite-btn">🤍</button>
+                </div>
+            </article>
+
+            <article class="project-card creative reveal-card">
+                <div class="creative-collage">
+                    <img src="assets/images/art-work-1.png" alt="Art work 1" class="creative-shot shot-1">
+                    <img src="assets/images/art-work-2.png" alt="Art work 2" class="creative-shot shot-2">
+                    <img src="assets/images/art-work-3.png" alt="Art work 3" class="creative-shot shot-3">
+                    <img src="assets/images/art-work-4.png" alt="Art work 4" class="creative-shot shot-4">
+                </div>
+
+                <div class="project-text">
+                    <h3>Art Archive</h3>
+                    <p>
+                        A creative concept for organizing painting ideas, finished pieces, and inspiration in one digital space.
+                        It reflects my interest in combining creativity with simple digital organization.
+                    </p>
+                    <button type="button" class="favorite-btn">🤍</button>
+                </div>
+            </article>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class = "reveal">
         <h2>Contact</h2>
 
         <form id="contactForm" novalidate>

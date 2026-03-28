@@ -52,6 +52,8 @@ if (modeButtons.length > 0 && projectCards.length > 0 && modeDescription && empt
             modeButtons.forEach(btn => btn.classList.remove("active"));
             button.classList.add("active");
 
+            updateModeVisuals("all");
+
             projectCards.forEach(card => {
                 if (
                     selectedMode === "all" ||
@@ -77,6 +79,9 @@ if (modeButtons.length > 0 && projectCards.length > 0 && modeDescription && empt
             } else {
                 emptyMessage.textContent = "";
             }
+            updateModeVisuals(selectedMode);
+            revealCreativeShots();
+            zoomLaptopFrames();
         });
     });
 }
@@ -89,17 +94,17 @@ favoriteButtons.forEach((button, index) => {
 
     if (localStorage.getItem(storageKey) === "true") {
         projectCard.classList.add("favorited");
-        button.textContent = "♥ Favorited";
+        button.textContent = "❤️";
     }
 
     button.addEventListener("click", function () {
         const isFavorited = projectCard.classList.toggle("favorited");
 
         if (isFavorited) {
-            button.textContent = "♥ Favorited";
+            button.textContent = "❤️";
             localStorage.setItem(storageKey, "true");
         } else {
-            button.textContent = "♡ Favorite";
+            button.textContent = "🤍";
             localStorage.setItem(storageKey, "false");
         }
     });
@@ -159,3 +164,76 @@ if (contactForm && nameInput && emailInput && messageInput && nameError && email
 } else {
     console.log("Form validation elements not found.");
 }
+
+function updateModeVisuals(selectedMode) {
+    const mixedCard = document.querySelector(".project-card.professional.creative");
+
+    if (!mixedCard) return;
+
+    const professionalView = mixedCard.querySelector(".professional-view");
+    const creativeView = mixedCard.querySelector(".creative-view");
+
+    if (!professionalView || !creativeView) return;
+
+    if (selectedMode === "professional") {
+        professionalView.style.display = "block";
+        creativeView.style.display = "none";
+    } else if (selectedMode === "creative") {
+        professionalView.style.display = "none";
+        creativeView.style.display = "block";
+    } else {
+        professionalView.style.display = "block";
+        creativeView.style.display = "block";
+    }
+}
+
+const revealElements = document.querySelectorAll(".reveal");
+
+function handleScrollReveal() {
+    revealElements.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+function revealCreativeShots() {
+    const creativeShots = document.querySelectorAll(".creative-shot");
+
+    creativeShots.forEach((shot, index) => {
+        const rect = shot.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight - 40 && rect.bottom > 100;
+
+        if (isVisible && !shot.classList.contains("show")) {
+            setTimeout(() => {
+                shot.classList.add("show");
+            }, index * 220);
+        }
+    });
+}
+
+function zoomLaptopFrames() {
+    const frames = document.querySelectorAll(".zoom-card");
+
+    frames.forEach(frame => {
+        const rect = frame.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight - 100) {
+            frame.classList.add("zoomed");
+        }
+    });
+}
+
+window.addEventListener("scroll", function () {
+    handleScrollReveal();
+    revealCreativeShots();
+    zoomLaptopFrames();
+});
+
+handleScrollReveal();
+revealCreativeShots();
+zoomLaptopFrames();
+
