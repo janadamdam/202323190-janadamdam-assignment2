@@ -1,27 +1,33 @@
-# 202323190-janadamdam-assignment1
+# Portfolio Website – Assignment 2
 
-# Assignment 1 - Personal Portofolio
-This project is a simple personal protoflio website
-The website includes About Me section to introduce myself, Projects section to display my projects, and a Contact section to provide a contact interface
+## Project Description
+
+This project is an interactive personal portfolio website developed as part of Assignment 2.
+
+The website presents my background, projects, and contact information in a structured and user-friendly way. It also introduces dynamic features and improved user interaction compared to Assignment 1.
+
+The portfolio reflects both my professional interests (computer science and web development) and my creative interests (art and sewing).
+
+---
 
 ## Features
-- About Me section
-- Projects section
-- Contact form UI (no backend)
-- Greeting message using JavaScript
-- Responsive layout
 
-## Projects Included
-- Digital Closet (In Progress)
-- Sewing Office (Concept)
+- Personalized welcome overlay where the user enters their name
+- Mode switching (All / Professional / Creative)
+- Dynamic project filtering based on selected mode
+- Scroll-based animations (fade-in effects)
+- Interactive project cards with a favorite feature using localStorage
+- Form validation with error messages and success feedback
+- Responsive layout for different screen sizes
 
-## Technologies Used
-- HTML
-- CSS
-- JavaScript
+---
 
 ## Setup Instructions
+
 To run the project locally:
-1. Clone the repository
-2. Open the project folder
-3. Open `index.html` in any web browser
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/janadamdam/202323190-janadamdam-assignment2.git
+2.	Open the project folder.
+3.	Open index.html in a browser.
