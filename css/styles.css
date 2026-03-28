@@ -115,6 +115,8 @@ textarea {
 }
 
 .error-message {
+    display: block;
+    min-hieght: 18px;
     color: #b00020;
     font-size: 0.9rem;
 }
@@ -181,4 +183,9 @@ textarea {
 
 .favorite-btn:hover {
     transform: scale(1.05);
+}
+
+#formMessage {
+    color: #7a1f3d;
+    font-weight: bold;
 }
